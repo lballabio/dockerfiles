@@ -1,4 +1,4 @@
-FROM lballabio/quantlib-python:1.5-trusty
+FROM lballabio/quantlib-python:1.6-trusty
 MAINTAINER Luigi Ballabio <luigi.ballabio@gmail.com>
 LABEL Description="An IPython notebook server with the QuantLib Python module available"
 

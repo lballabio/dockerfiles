@@ -1,8 +1,8 @@
-FROM lballabio/quantlib:1.5-trusty
+FROM lballabio/quantlib:1.6-trusty
 MAINTAINER Luigi Ballabio <luigi.ballabio@gmail.com>
 LABEL Description="An environment with the QuantLib Python module"
 
-ENV version=1.5
+ENV version=1.6
 
 RUN apt-get update && apt-get install -y python-dev
 RUN wget http://downloads.sourceforge.net/project/quantlib/QuantLib/${version}/other\ languages/QuantLib-SWIG-${version}.tar.gz \
