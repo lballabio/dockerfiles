@@ -8,7 +8,6 @@ RUN wget http://downloads.sourceforge.net/project/quantlib/QuantLib/${version}/Q
     && tar xfz QuantLib-${version}.tar.gz \
     && rm QuantLib-${version}.tar.gz
 RUN cd QuantLib-${version} \
-    && ./autogen.sh \
     && ./configure --prefix=/usr CXXFLAGS=-O2 \
     && make -j 4 && make install \
     && cd .. && rm -rf QuantLib-${version} && ldconfig
