@@ -10,6 +10,6 @@ RUN wget http://downloads.sourceforge.net/project/quantlib/QuantLib/${version}/Q
 RUN cd QuantLib-${version} \
     && ./autogen.sh \
     && ./configure --prefix=/usr CXXFLAGS=-O2 \
-    && make && make install \
+    && make -j 4 && make install \
     && cd .. && rm -rf QuantLib-${version} && ldconfig
 

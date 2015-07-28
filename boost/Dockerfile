@@ -10,6 +10,6 @@ RUN wget http://downloads.sourceforge.net/project/boost/boost/${major}.${minor}.
     && rm boost_${major}_${minor}_${patch}.tar.gz
 RUN cd boost_${major}_${minor}_${patch} \
     && ./bootstrap.sh \
-    && ./b2 --prefix=/usr install \
+    && ./b2 --prefix=/usr -j 4 install \
     && cd .. && rm -rf boost_${major}_${minor}_${patch} && ldconfig
 
