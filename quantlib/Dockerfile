@@ -1,4 +1,4 @@
-FROM lballabio/boost:1.58.0-trusty
+FROM lballabio/boost
 MAINTAINER Luigi Ballabio <luigi.ballabio@gmail.com>
 LABEL Description="A building environment where the QuantLib C++ library is available"
 
