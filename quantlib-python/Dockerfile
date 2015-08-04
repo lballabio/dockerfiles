@@ -2,7 +2,7 @@ FROM lballabio/quantlib
 MAINTAINER Luigi Ballabio <luigi.ballabio@gmail.com>
 LABEL Description="An environment with the QuantLib Python module"
 
-ENV version=1.6
+ENV version=1.6.1
 
 RUN apt-get update && apt-get install -y python-dev
 RUN wget http://downloads.sourceforge.net/project/quantlib/QuantLib/${version}/other\ languages/QuantLib-SWIG-${version}.tar.gz \

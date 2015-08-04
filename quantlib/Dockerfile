@@ -2,7 +2,7 @@ FROM lballabio/boost
 MAINTAINER Luigi Ballabio <luigi.ballabio@gmail.com>
 LABEL Description="A building environment where the QuantLib C++ library is available"
 
-ENV version=1.6
+ENV version=1.6.1
 
 RUN wget http://downloads.sourceforge.net/project/quantlib/QuantLib/${version}/QuantLib-${version}.tar.gz \
     && tar xfz QuantLib-${version}.tar.gz \
