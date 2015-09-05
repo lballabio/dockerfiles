@@ -2,14 +2,15 @@ FROM ubuntu
 MAINTAINER Luigi Ballabio <luigi.ballabio@gmail.com>
 LABEL Description="Provide a building environment where the Boost C++ libraries are available"
 
-ENV major=1 minor=59 patch=0
-
 RUN apt-get update && apt-get install -y build-essential wget libbz2-dev
-RUN wget http://downloads.sourceforge.net/project/boost/boost/${major}.${minor}.${patch}/boost_${major}_${minor}_${patch}.tar.gz \
-    && tar xfz boost_${major}_${minor}_${patch}.tar.gz \
-    && rm boost_${major}_${minor}_${patch}.tar.gz \
-    && cd boost_${major}_${minor}_${patch} \
+
+ENV boost_version=1.59.0 boost_dir=boost_1_59_0
+
+RUN wget http://downloads.sourceforge.net/project/boost/boost/${boost_version}/${boost_dir}.tar.gz \
+    && tar xfz ${boost_dir}.tar.gz \
+    && rm ${boost_dir}.tar.gz \
+    && cd ${boost_dir} \
     && ./bootstrap.sh \
     && ./b2 --prefix=/usr -j 4 link=shared runtime-link=shared install \
-    && cd .. && rm -rf boost_${major}_${minor}_${patch} && ldconfig
+    && cd .. && rm -rf ${boost_dir} && ldconfig
 
