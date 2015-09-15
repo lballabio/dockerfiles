@@ -1,4 +1,4 @@
-FROM lballabio/boost:1.58.0-vivid
+FROM lballabio/boost
 MAINTAINER Luigi Ballabio <luigi.ballabio@gmail.com>
 LABEL Description="A testing environment for building QuantLib and its SWIG bindings"
 
