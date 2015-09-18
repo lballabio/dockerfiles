@@ -16,3 +16,5 @@ RUN wget http://downloads.sourceforge.net/project/swig/swig/swig-${swig_version}
     && make -j 4 && make install \
     && cd .. && rm -rf swig-${swig_version}
 
+CMD bash
+

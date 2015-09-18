@@ -10,3 +10,5 @@ RUN apt-get update && apt-get install -y clang \
                                          r-base-dev texlive \
                                          default-jdk
 
+CMD bash
+

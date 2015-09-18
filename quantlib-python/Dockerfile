@@ -14,3 +14,5 @@ RUN wget http://downloads.sourceforge.net/project/quantlib/QuantLib/${quantlib_s
     && make && make install \
     && cd .. && rm -rf QuantLib-SWIG-${quantlib_swig_version}
 
+CMD python
+

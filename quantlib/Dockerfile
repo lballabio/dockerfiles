@@ -12,3 +12,5 @@ RUN wget http://downloads.sourceforge.net/project/quantlib/QuantLib/${quantlib_v
     && make -j 4 && make install \
     && cd .. && rm -rf QuantLib-${quantlib_version} && ldconfig
 
+CMD bash
+
