@@ -8,7 +8,7 @@ RUN wget http://downloads.sourceforge.net/project/quantlib/QuantLib/${quantlib_v
     && tar xfz QuantLib-${quantlib_version}.tar.gz \
     && rm QuantLib-${quantlib_version}.tar.gz \
     && cd QuantLib-${quantlib_version} \
-    && ./configure --prefix=/usr --disable-static CXXFLAGS=-O2 \
+    && ./configure --prefix=/usr --disable-static CXXFLAGS=-O3 \
     && make -j 4 && make install \
     && cd .. && rm -rf QuantLib-${quantlib_version} && ldconfig
 
