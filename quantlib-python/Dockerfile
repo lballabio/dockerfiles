@@ -2,7 +2,8 @@ FROM lballabio/quantlib
 MAINTAINER Luigi Ballabio <luigi.ballabio@gmail.com>
 LABEL Description="An environment with the QuantLib Python module"
 
-RUN apt-get update && apt-get install -y python-dev
+RUN apt-get update \
+ && DEBIAN_FRONTEND=noninteractive apt-get install -y python-dev
 
 ENV quantlib_swig_version=1.6.1
 

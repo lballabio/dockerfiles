@@ -2,9 +2,8 @@ FROM ubuntu
 MAINTAINER Luigi Ballabio <luigi.ballabio@gmail.com>
 LABEL Description="Provide a building environment where the Boost C++ libraries are available"
 
-ENV DEBIAN_FRONTEND=noninteractive
-
-RUN apt-get update && apt-get install -y build-essential wget libbz2-dev
+RUN apt-get update \
+ && DEBIAN_FRONTEND=noninteractive apt-get install -y build-essential wget libbz2-dev
 
 ENV boost_version=1.59.0 boost_dir=boost_1_59_0
 
