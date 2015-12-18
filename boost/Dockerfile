@@ -7,8 +7,8 @@ RUN apt-get update \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
-ARG boost_version=1.59.0
-ARG boost_dir=boost_1_59_0
+ARG boost_version=1.60.0
+ARG boost_dir=boost_1_60_0
 ENV boost_version ${boost_version}
 
 RUN wget http://downloads.sourceforge.net/project/boost/boost/${boost_version}/${boost_dir}.tar.gz \
