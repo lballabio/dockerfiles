@@ -7,15 +7,15 @@ quantlib-notebook: quantlib-python
 quantlib-python: quantlib
 	cd quantlib-python && docker build -t lballabio/quantlib-python .
 
-quantlib: boost
+quantlib:
 	cd quantlib && docker build -t lballabio/quantlib .
 
 boost:
 	cd boost && docker build -t lballabio/boost .
 
-testbox: boost
+testbox:
 	cd testbox && docker build -t testbox .
 
-devbox: boost
+devbox:
 	cd devbox && docker build -t devbox .
 
