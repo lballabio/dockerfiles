@@ -7,8 +7,8 @@ RUN apt-get update \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
-ARG boost_version=1.60.0
-ARG boost_dir=boost_1_60_0
+ARG boost_version=1.61.0
+ARG boost_dir=boost_1_61_0
 ENV boost_version ${boost_version}
 
 RUN wget http://downloads.sourceforge.net/project/boost/boost/${boost_version}/${boost_dir}.tar.gz \
@@ -16,7 +16,7 @@ RUN wget http://downloads.sourceforge.net/project/boost/boost/${boost_version}/$
     && rm ${boost_dir}.tar.gz \
     && cd ${boost_dir} \
     && ./bootstrap.sh \
-    && ./b2 --prefix=/usr -j 4 link=shared runtime-link=shared install \
+    && ./b2 --without-python --prefix=/usr -j 4 link=shared runtime-link=shared install \
     && cd .. && rm -rf ${boost_dir} && ldconfig
 
 CMD bash
