@@ -3,7 +3,8 @@ MAINTAINER Luigi Ballabio <luigi.ballabio@gmail.com>
 LABEL Description="An IPython notebook server with the QuantLib Python module available"
 
 RUN apt-get update \
- && DEBIAN_FRONTEND=noninteractive apt-get install -y ipython-notebook python-matplotlib python-pandas \
+ && DEBIAN_FRONTEND=noninteractive apt-get install -y ipython-notebook python-matplotlib \
+                                                      python-pandas python-seaborn \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
