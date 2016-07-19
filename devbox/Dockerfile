@@ -2,9 +2,11 @@ FROM lballabio/boost
 MAINTAINER Luigi Ballabio <luigi.ballabio@gmail.com>
 LABEL Description="A development environment for building QuantLib and its SWIG bindings"
 
-RUN apt-get update && apt-get install -y autoconf automake libtool \
+RUN apt-get update && apt-get install -y autoconf automake libtool ccache \
                                          libpcre3-dev python-dev \
                                          ipython-notebook python-matplotlib python-pandas
+
+RUN mv /usr/lib/ccache/* /usr/local/bin
 
 ENV swig_version=3.0.10
 
