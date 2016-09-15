@@ -10,7 +10,7 @@ RUN wget http://downloads.sourceforge.net/project/quantlib/QuantLib/${quantlib_v
     && rm QuantLib-${quantlib_version}.tar.gz \
     && cd QuantLib-${quantlib_version} \
     && ./configure --prefix=/usr --disable-static CXXFLAGS=-O3 \
-    && make -j 4 && make install \
+    && make -j 4 && make check && make install \
     && cd .. && rm -rf QuantLib-${quantlib_version} && ldconfig
 
 CMD bash
