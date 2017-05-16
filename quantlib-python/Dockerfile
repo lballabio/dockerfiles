@@ -7,7 +7,7 @@ RUN apt-get update \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
-ARG quantlib_swig_version=1.9
+ARG quantlib_swig_version=1.10
 ENV quantlib_swig_version ${quantlib_swig_version}
 
 RUN wget http://downloads.sourceforge.net/project/quantlib/QuantLib/${quantlib_swig_version}/other\ languages/QuantLib-SWIG-${quantlib_swig_version}.tar.gz \
