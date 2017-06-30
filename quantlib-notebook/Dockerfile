@@ -1,4 +1,5 @@
-FROM lballabio/quantlib-python
+ARG tag=latest
+FROM lballabio/quantlib-python:${tag}
 MAINTAINER Luigi Ballabio <luigi.ballabio@gmail.com>
 LABEL Description="An IPython notebook server with the QuantLib Python module available"
 

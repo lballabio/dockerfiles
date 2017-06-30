@@ -1,4 +1,5 @@
-FROM lballabio/quantlib
+ARG tag=latest
+FROM lballabio/quantlib:${tag}
 MAINTAINER Luigi Ballabio <luigi.ballabio@gmail.com>
 LABEL Description="An environment with the QuantLib Python module"
 
