@@ -1,5 +1,5 @@
 
-.PHONY: boost quantlib quantlib-python quantlib-notebook testbox devbox
+.PHONY: boost quantlib quantlib-python quantlib-notebook testbox devbox quantlib-devenv
 
 TAG:=latest
 
@@ -20,4 +20,7 @@ testbox:
 
 devbox:
 	cd devbox && docker build --build-arg tag=$(TAG) -t devbox:$(TAG) .
+
+quantlib-devenv:
+	cd quantlib-devenv && docker build --build-arg tag=$(TAG) -t lballabio/quantlib-devenv:$(TAG) .
 
