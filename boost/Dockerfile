@@ -8,11 +8,11 @@ RUN apt-get update \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
-ARG boost_version=1.64.0
-ARG boost_dir=boost_1_64_0
+ARG boost_version
+ARG boost_dir
 ENV boost_version ${boost_version}
 
-RUN wget https://dl.bintray.com/boostorg/release/${boost_version}/source/${boost_dir}.tar.gz \
+RUN wget http://downloads.sourceforge.net/project/boost/boost/${boost_version}/${boost_dir}.tar.gz \
     && tar xfz ${boost_dir}.tar.gz \
     && rm ${boost_dir}.tar.gz \
     && cd ${boost_dir} \

@@ -13,7 +13,10 @@ quantlib:
 	cd quantlib && docker build --build-arg tag=$(TAG) -t lballabio/quantlib:$(TAG) .
 
 boost:
-	cd boost && docker build --build-arg tag=$(TAG) -t lballabio/boost:$(TAG) .
+	cd boost && docker build --build-arg tag=$(TAG) \
+	                         --build-arg boost_version=$(BOOST_VERSION) \
+	                         --build-arg boost_dir=$(BOOST_DIR) \
+	                         -t lballabio/boost:$(TAG) .
 
 testbox:
 	cd testbox && docker build --build-arg tag=$(TAG) -t testbox:$(TAG) .
