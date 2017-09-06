@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y autoconf automake libtool ccache \
 
 RUN mv /usr/lib/ccache/* /usr/local/bin
 
-ENV swig_version=3.0.10
+ENV swig_version=3.0.12
 
 RUN wget http://downloads.sourceforge.net/project/swig/swig/swig-${swig_version}/swig-${swig_version}.tar.gz \
     && tar xfz swig-${swig_version}.tar.gz \
