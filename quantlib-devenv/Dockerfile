@@ -4,7 +4,7 @@ MAINTAINER Luigi Ballabio <luigi.ballabio@gmail.com>
 LABEL Description="A development environment for building QuantLib on Travis CI"
 
 RUN apt-get update \
- && DEBIAN_FRONTEND=noninteractive apt-get install -y autoconf automake libtool ccache \
+ && DEBIAN_FRONTEND=noninteractive apt-get install -y autoconf automake libtool ccache cmake \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
