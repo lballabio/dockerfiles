@@ -8,7 +8,5 @@ RUN apt-get update \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
-RUN mv /usr/lib/ccache/* /usr/local/bin
-
 CMD bash
 
