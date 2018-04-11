@@ -6,7 +6,7 @@ LABEL Description="A building environment where the QuantLib C++ library is avai
 ARG quantlib_version
 ENV quantlib_version ${quantlib_version}
 
-RUN wget http://downloads.sourceforge.net/project/quantlib/QuantLib/${quantlib_version}/QuantLib-${quantlib_version}.tar.gz \
+RUN wget https://dl.bintray.com/quantlib/releases/QuantLib-${quantlib_version}.tar.gz \
     && tar xfz QuantLib-${quantlib_version}.tar.gz \
     && rm QuantLib-${quantlib_version}.tar.gz \
     && cd QuantLib-${quantlib_version} \

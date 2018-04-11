@@ -8,12 +8,12 @@ RUN apt-get update \
 
 ARG quantlib_swig_version
 
-RUN wget http://downloads.sourceforge.net/project/quantlib/QuantLib/${quantlib_swig_version}/other\ languages/QuantLib-SWIG-${quantlib_swig_version}.tar.gz \
+RUN wget https://dl.bintray.com/quantlib/releases/QuantLib-SWIG-${quantlib_swig_version}.tar.gz \
     && tar xfz QuantLib-SWIG-${quantlib_swig_version}.tar.gz \
     && rm QuantLib-SWIG-${quantlib_swig_version}.tar.gz \
     && cd QuantLib-SWIG-${quantlib_swig_version} \
-    && ./configure --disable-perl --disable-ruby --disable-mzscheme --disable-guile --disable-csharp --disable-ocaml --disable-r --disable-java CXXFLAGS=-O3 \
-    && make && make -C Python check && make install \
+    && ./configure CXXFLAGS=-O3 \
+    && make -C Python && make -C Python check && make -C Python install \
     && cd .. && rm -rf QuantLib-SWIG-${quantlib_swig_version}
 
 
