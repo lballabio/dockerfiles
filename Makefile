@@ -24,7 +24,7 @@ quantlib:
 boost:
 	cd boost && docker build --build-arg tag=$(TAG) \
 	                         --build-arg boost_version=$(BOOST_VERSION) \
-	                         --build-arg boost_dir=$(BOOST_DIR) \
+	                         --build-arg boost_dir=boost_$(subst .,_,$(BOOST_VERSION)) \
 	                         -t lballabio/boost:$(TAG) .
 
 testbox:
