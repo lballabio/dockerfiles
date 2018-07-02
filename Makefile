@@ -1,5 +1,5 @@
 
-.PHONY: all boost quantlib quantlib-python quantlib-notebook quantlib-jupyter testbox devbox quantlib-devenv
+.PHONY: all boost quantlib quantlib-python quantlib-python3 quantlib-notebook quantlib-jupyter testbox devbox quantlib-devenv
 
 TAG:=latest
 
@@ -15,6 +15,11 @@ quantlib-python:
 	cd quantlib-python && docker build --build-arg tag=$(TAG) \
                                        --build-arg quantlib_swig_version=$(QL_SWIG_VERSION) \
                                        -t lballabio/quantlib-python:$(TAG) .
+
+quantlib-python3:
+	cd quantlib-python3 && docker build --build-arg tag=$(TAG) \
+                                        --build-arg quantlib_swig_version=$(QL_SWIG_VERSION) \
+                                        -t lballabio/quantlib-python3:$(TAG) .
 
 quantlib:
 	cd quantlib && docker build --build-arg tag=$(TAG) \
