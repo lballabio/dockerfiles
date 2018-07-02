@@ -12,7 +12,7 @@ RUN wget https://dl.bintray.com/quantlib/releases/QuantLib-SWIG-${quantlib_swig_
     && tar xfz QuantLib-SWIG-${quantlib_swig_version}.tar.gz \
     && rm QuantLib-SWIG-${quantlib_swig_version}.tar.gz \
     && cd QuantLib-SWIG-${quantlib_swig_version} \
-    && ./configure CXXFLAGS=-O3 \
+    && ./configure CXXFLAGS='-g0 -O3' \
     && make -C Python && make -C Python check && make -C Python install \
     && cd .. && rm -rf QuantLib-SWIG-${quantlib_swig_version}
 
@@ -35,7 +35,7 @@ RUN cd /usr/lib && ln -s libQuantLib.so.0.0.0 libQuantLib.so
 RUN ldconfig
 
 COPY --from=builder /usr/local/lib/python2.7/dist-packages/QuantLib \
-                    /usr/local/lib/python2.7/dist-packages/
+                    /usr/local/lib/python2.7/dist-packages/QuantLib
 COPY --from=builder /usr/local/lib/python2.7/dist-packages/QuantLib*.egg-info \
                     /usr/local/lib/python2.7/dist-packages/
 
