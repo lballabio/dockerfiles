@@ -12,7 +12,9 @@ RUN wget https://bootstrap.pypa.io/get-pip.py \
  && python3 get-pip.py \
  && rm get-pip.py
 
-RUN pip install --no-cache-dir jupyter matplotlib numpy scipy pandas
+RUN pip install --no-cache-dir jupyter matplotlib numpy scipy pandas RISE
+
+RUN jupyter-nbextension install rise --py --sys-prefix
 
 EXPOSE 8888
 
