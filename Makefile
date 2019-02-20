@@ -1,12 +1,9 @@
 
-.PHONY: all boost quantlib quantlib-python quantlib-python3 quantlib-notebook quantlib-jupyter testbox devbox quantlib-devenv
+.PHONY: all boost quantlib quantlib-python quantlib-python3 quantlib-jupyter testbox devbox quantlib-devenv
 
 TAG:=latest
 
-all: quantlib quantlib-python quantlib-notebook quantlib-jupyter
-
-quantlib-notebook:
-	cd quantlib-notebook && docker build --build-arg tag=$(TAG) -t lballabio/quantlib-notebook:$(TAG) .
+all: quantlib quantlib-python3 quantlib-jupyter
 
 quantlib-jupyter:
 	cd quantlib-jupyter && docker build --build-arg tag=$(TAG) -t lballabio/quantlib-jupyter:$(TAG) .
