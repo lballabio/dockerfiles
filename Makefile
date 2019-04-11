@@ -45,4 +45,6 @@ quantlib-swig-devenv:
 	                        && docker build -f Dockerfile.python3 -t lballabio/quantlib-swig-devenv:python3 . \
 	                        && docker build -f Dockerfile.csharp -t lballabio/quantlib-swig-devenv:csharp . \
 	                        && docker build -f Dockerfile.java -t lballabio/quantlib-swig-devenv:java . \
-	                        && docker build -f Dockerfile.r -t lballabio/quantlib-swig-devenv:r .
+	                        && docker build -f Dockerfile.r -t lballabio/quantlib-swig-devenv:r . \
+				&& docker build -f Dockerfile.scala -t lballabio/quantlib-swig-devenv:scala .
+
