@@ -5,7 +5,7 @@ LABEL Description="A development environment for building QuantLib-SWIG on Travi
 
 RUN apt-get update \
  && DEBIAN_FRONTEND=noninteractive apt-get install -y autoconf automake libtool \
-                                                      libpcre3-dev \
+                                                      libpcre3-dev clang \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
@@ -25,7 +25,7 @@ RUN cd /tmp \
  && tar xfz QuantLib-*.tar.gz \
  && rm QuantLib-*.tar.gz \
  && cd QuantLib-* \
- && ./configure --enable-thread-safe-observer-pattern CXXFLAGS='-O3 -g0' \
+ && ./configure --enable-thread-safe-observer-pattern CC=clang CXX=clang++ CXXFLAGS='-O3 -g0' \
  && make -j 4 && make install \
  && cd .. && rm -rf QuantLib-*
 
