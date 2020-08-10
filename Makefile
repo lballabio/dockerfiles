@@ -41,6 +41,8 @@ quantlib-devenv:
 
 quantlib-swig-devenv:
 	cd quantlib-swig-devenv && docker build -f Dockerfile.base --build-arg tag=$(TAG) -t lballabio/quantlib-swig-devenv:base . \
+	                        && docker build -f Dockerfile.default -t lballabio/quantlib-swig-devenv:default . \
+	                        && docker build -f Dockerfile.threadsafe -t lballabio/quantlib-swig-devenv:threadsafe . \
 	                        && docker build -f Dockerfile.python2 -t lballabio/quantlib-swig-devenv:python2 . \
 	                        && docker build -f Dockerfile.python3 -t lballabio/quantlib-swig-devenv:python3 . \
 	                        && docker build -f Dockerfile.csharp -t lballabio/quantlib-swig-devenv:csharp . \

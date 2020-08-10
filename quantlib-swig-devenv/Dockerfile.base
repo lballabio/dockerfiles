@@ -21,14 +21,4 @@ RUN wget http://downloads.sourceforge.net/project/swig/swig/swig-${swig_version}
 
 COPY QuantLib-*.tar.gz /tmp
 
-RUN cd /tmp \
- && tar xfz QuantLib-*.tar.gz \
- && rm QuantLib-*.tar.gz \
- && cd QuantLib-* \
- && ./configure --enable-thread-safe-observer-pattern --enable-unity-build --disable-static CC=clang CXX=clang++ CXXFLAGS='-O3 -g0' \
- && make -j 4 && make install \
- && cd .. && rm -rf QuantLib-*
-
-RUN ldconfig
-
 CMD bash

@@ -1,4 +1,4 @@
-FROM lballabio/quantlib-swig-devenv:base
+FROM lballabio/quantlib-swig-devenv:default
 MAINTAINER Luigi Ballabio <luigi.ballabio@gmail.com>
 LABEL Description="A development environment for building QuantLib-SWIG on Travis CI"
 
