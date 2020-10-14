@@ -1,0 +1,38 @@
+name: Build quantlib-devenv Docker images
+on:
+  push:
+    branches:
+      - master
+env:
+  BOOST_VERSION: 1.74.0
+  ROLLING: groovy
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        tag: [eoan, focal, groovy]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build images
+      run: |
+        make boost TAG=${{ matrix.tag }} BOOST_VERSION=$BOOST_VERSION
+        make quantlib-devenv TAG=${{ matrix.tag }}
+        docker tag lballabio/quantlib-devenv:${{ matrix.tag }} lballabio/quantlib-devenv:${{ matrix.tag }}-$BOOST_VERSION
+        if test "${{ matrix.tag }}" = "$ROLLING" ; then
+            make boost TAG=rolling BOOST_VERSION=$BOOST_VERSION
+            make quantlib-devenv TAG=rolling
+        fi
+    - name: Login to DockerHub
+      uses: docker/login-action@v1
+      with:
+        username: ${{ secrets.DOCKER_HUB_USER }}
+        password: ${{ secrets.DOCKER_HUB_TOKEN }}
+    - name: Push Docker images
+      run: |
+        docker push lballabio/quantlib-devenv:${{ matrix.tag }}
+        docker push lballabio/quantlib-devenv:${{ matrix.tag }}-$BOOST_VERSION
+        if test "${{ matrix.tag }}" = "$ROLLING" ; then
+            docker push lballabio/boost:rolling
+            docker push lballabio/quantlib-devenv:rolling
+        fi
