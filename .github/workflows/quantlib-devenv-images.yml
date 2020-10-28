@@ -1,8 +1,5 @@
 name: Build quantlib-devenv Docker images
-on:
-  push:
-    branches:
-      - master
+on: workflow_dispatch
 env:
   BOOST_VERSION: 1.74.0
   ROLLING: groovy
