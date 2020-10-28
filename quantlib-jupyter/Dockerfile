@@ -1,9 +1,9 @@
 ARG tag=latest
-FROM lballabio/quantlib-python3:${tag}
+FROM python:${tag}
 MAINTAINER Luigi Ballabio <luigi.ballabio@gmail.com>
 LABEL Description="A Jupyter notebook server with the QuantLib Python module available"
 
-RUN pip install --no-cache-dir jupyter jupyterlab matplotlib numpy scipy pandas ipywidgets RISE
+RUN pip install --no-cache-dir quantlib jupyter jupyterlab matplotlib numpy scipy pandas ipywidgets RISE
 
 RUN jupyter-nbextension install rise --py --sys-prefix
 RUN jupyter-nbextension install widgetsnbextension --py --sys-prefix \
