@@ -14,11 +14,17 @@ jobs:
       run: |
         rm -rf quantlib-swig-devenv/QuantLib/.git
         make quantlib-swig-devenv TAG=rolling
-    - name: Login to DockerHub
+    - name: Login to GitHub Container Registry
       uses: docker/login-action@v1
       with:
-        username: ${{ secrets.DOCKER_HUB_USER }}
-        password: ${{ secrets.DOCKER_HUB_TOKEN }}
+        registry: ghcr.io
+        username: ${{ github.repository_owner }}
+        password: ${{ secrets.GHCR_PAT }}
     - name: Push Docker images
       run: |
-        docker push lballabio/quantlib-swig-devenv
+        docker push ghcr.io/lballabio/quantlib-swig-devenv:csharp
+        docker push ghcr.io/lballabio/quantlib-swig-devenv:java
+        docker push ghcr.io/lballabio/quantlib-swig-devenv:scala
+        docker push ghcr.io/lballabio/quantlib-swig-devenv:r
+        docker push ghcr.io/lballabio/quantlib-swig-devenv:python2
+        docker push ghcr.io/lballabio/quantlib-swig-devenv:python3

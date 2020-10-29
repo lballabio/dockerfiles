@@ -1,4 +1,4 @@
-FROM lballabio/quantlib-swig-devenv:java
+FROM ghcr.io/lballabio/quantlib-swig-devenv:java
 MAINTAINER Luigi Ballabio <luigi.ballabio@gmail.com>
 LABEL Description="A development environment for building QuantLib-SWIG on Travis CI"
 

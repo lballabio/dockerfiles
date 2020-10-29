@@ -1,4 +1,4 @@
-FROM lballabio/quantlib-swig-devenv:threadsafe
+FROM ghcr.io/lballabio/quantlib-swig-devenv:threadsafe
 MAINTAINER Luigi Ballabio <luigi.ballabio@gmail.com>
 LABEL Description="A development environment for building QuantLib-SWIG on Travis CI"
 
