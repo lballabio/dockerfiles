@@ -1,14 +1,14 @@
 name: Build quantlib-devenv Docker images
 on: workflow_dispatch
 env:
-  BOOST_VERSION: 1.74.0
+  BOOST_VERSION: 1.75.0
   ROLLING: groovy
 jobs:
   build:
     runs-on: ubuntu-20.04
     strategy:
       matrix:
-        tag: [eoan, focal, groovy]
+        tag: [focal, groovy]
     steps:
     - uses: actions/checkout@v2
     - name: Build images
