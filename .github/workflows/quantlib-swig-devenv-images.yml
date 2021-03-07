@@ -26,5 +26,4 @@ jobs:
         docker push ghcr.io/lballabio/quantlib-swig-devenv:java
         docker push ghcr.io/lballabio/quantlib-swig-devenv:scala
         docker push ghcr.io/lballabio/quantlib-swig-devenv:r
-        docker push ghcr.io/lballabio/quantlib-swig-devenv:python2
         docker push ghcr.io/lballabio/quantlib-swig-devenv:python3

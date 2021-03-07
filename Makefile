@@ -18,12 +18,11 @@ quantlib-swig-devenv:
 	cd quantlib-swig-devenv && docker build -f Dockerfile.base --build-arg tag=$(TAG) -t ghcr.io/lballabio/quantlib-swig-devenv:base . \
 	                        && docker build -f Dockerfile.default -t ghcr.io/lballabio/quantlib-swig-devenv:default . \
 	                        && docker build -f Dockerfile.threadsafe -t ghcr.io/lballabio/quantlib-swig-devenv:threadsafe . \
-	                        && docker build -f Dockerfile.python2 -t ghcr.io/lballabio/quantlib-swig-devenv:python2 . \
 	                        && docker build -f Dockerfile.python3 -t ghcr.io/lballabio/quantlib-swig-devenv:python3 . \
 	                        && docker build -f Dockerfile.csharp -t ghcr.io/lballabio/quantlib-swig-devenv:csharp . \
 	                        && docker build -f Dockerfile.java -t ghcr.io/lballabio/quantlib-swig-devenv:java . \
 	                        && docker build -f Dockerfile.r -t ghcr.io/lballabio/quantlib-swig-devenv:r . \
-				&& docker build -f Dockerfile.scala -t ghcr.io/lballabio/quantlib-swig-devenv:scala .
+	                        && docker build -f Dockerfile.scala -t ghcr.io/lballabio/quantlib-swig-devenv:scala .
 
 quantlib-jupyter:
 	cd quantlib-jupyter && docker build --build-arg tag=$(TAG) -t lballabio/quantlib-jupyter:$(TAG) .
