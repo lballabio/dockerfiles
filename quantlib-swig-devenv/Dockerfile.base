@@ -22,4 +22,6 @@ RUN wget http://downloads.sourceforge.net/project/swig/swig/swig-${swig_version}
 RUN mkdir /QuantLib
 COPY QuantLib /QuantLib
 
+RUN rm /usr/lib/libboost_unit_test_framework.so*
+
 CMD bash
