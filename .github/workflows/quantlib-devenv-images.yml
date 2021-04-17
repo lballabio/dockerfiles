@@ -1,7 +1,11 @@
 name: Build quantlib-devenv Docker images
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+    inputs:
+      boostVersion:
+        description: 'Boost version'
+        required: true
 env:
-  BOOST_VERSION: 1.75.0
   ROLLING: groovy
 jobs:
   build:
@@ -13,9 +17,9 @@ jobs:
     - uses: actions/checkout@v2
     - name: Build images
       run: |
-        make boost TAG=${{ matrix.tag }} BOOST_VERSION=$BOOST_VERSION
+        make boost TAG=${{ matrix.tag }} BOOST_VERSION=${{ github.event.inputs.boostVersion }}
         make quantlib-devenv TAG=${{ matrix.tag }}
-        docker tag ghcr.io/lballabio/quantlib-devenv:${{ matrix.tag }} ghcr.io/lballabio/quantlib-devenv:${{ matrix.tag }}-$BOOST_VERSION
+        docker tag ghcr.io/lballabio/quantlib-devenv:${{ matrix.tag }} ghcr.io/lballabio/quantlib-devenv:${{ matrix.tag }}-${{ github.event.inputs.boostVersion }}
         if test "${{ matrix.tag }}" = "$ROLLING" ; then
             docker tag ghcr.io/lballabio/boost:${{ matrix.tag }} ghcr.io/lballabio/boost:rolling
             docker tag ghcr.io/lballabio/quantlib-devenv:${{ matrix.tag }} ghcr.io/lballabio/quantlib-devenv:rolling
@@ -28,7 +32,7 @@ jobs:
         password: ${{ secrets.GHCR_PAT }}
     - name: Push Docker images
       run: |
-        docker push ghcr.io/lballabio/quantlib-devenv:${{ matrix.tag }}-$BOOST_VERSION
+        docker push ghcr.io/lballabio/quantlib-devenv:${{ matrix.tag }}-${{ github.event.inputs.boostVersion }}
         docker push ghcr.io/lballabio/quantlib-devenv:${{ matrix.tag }}
         if test "${{ matrix.tag }}" = "$ROLLING" ; then
             docker push ghcr.io/lballabio/boost:rolling
