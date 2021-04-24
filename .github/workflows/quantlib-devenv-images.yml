@@ -6,13 +6,13 @@ on:
         description: 'Boost version'
         required: true
 env:
-  ROLLING: groovy
+  ROLLING: hirsute
 jobs:
   build:
     runs-on: ubuntu-20.04
     strategy:
       matrix:
-        tag: [focal, groovy]
+        tag: [focal, groovy, hirsute]
     steps:
     - uses: actions/checkout@v2
     - name: Build images
