@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-20.04
     strategy:
       matrix:
-        tag: [focal, groovy, hirsute]
+        tag: [focal, groovy, hirsute, impish]
     steps:
     - uses: actions/checkout@v2
     - name: Build images
