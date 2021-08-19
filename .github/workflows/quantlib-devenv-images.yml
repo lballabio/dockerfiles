@@ -22,6 +22,7 @@ jobs:
         docker tag ghcr.io/lballabio/quantlib-devenv:${{ matrix.tag }} ghcr.io/lballabio/quantlib-devenv:${{ matrix.tag }}-${{ github.event.inputs.boostVersion }}
         if test "${{ matrix.tag }}" = "$ROLLING" ; then
             docker tag ghcr.io/lballabio/boost:${{ matrix.tag }} ghcr.io/lballabio/boost:rolling
+            docker tag ghcr.io/lballabio/boost:${{ matrix.tag }} ghcr.io/lballabio/boost:${{ github.event.inputs.boostVersion }}
             docker tag ghcr.io/lballabio/quantlib-devenv:${{ matrix.tag }} ghcr.io/lballabio/quantlib-devenv:rolling
         fi
     - name: Login to GitHub Container Registry
@@ -36,5 +37,6 @@ jobs:
         docker push ghcr.io/lballabio/quantlib-devenv:${{ matrix.tag }}
         if test "${{ matrix.tag }}" = "$ROLLING" ; then
             docker push ghcr.io/lballabio/boost:rolling
+            docker push ghcr.io/lballabio/boost:${{ github.event.inputs.boostVersion }}
             docker push ghcr.io/lballabio/quantlib-devenv:rolling
         fi
