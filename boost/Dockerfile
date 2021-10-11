@@ -4,9 +4,9 @@ MAINTAINER Luigi Ballabio <luigi.ballabio@gmail.com>
 LABEL Description="Provide a building environment where the Boost C++ libraries are available"
 
 RUN apt-get update \
- && DEBIAN_FRONTEND=noninteractive apt-get install -y build-essential wget libbz2-dev \
- && apt-get clean \
- && rm -rf /var/lib/apt/lists/*
+  ; DEBIAN_FRONTEND=noninteractive apt-get install -y build-essential wget libbz2-dev \
+  ; apt-get clean \
+  ; rm -rf /var/lib/apt/lists/*
 
 ARG boost_version
 ARG boost_dir
