@@ -8,5 +8,8 @@ RUN apt-get update \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
+RUN git config --global --add safe.directory /__w/QuantLib/QuantLib
+RUN git config --global --add safe.directory /__w/QuantLib-SWIG/QuantLib-SWIG
+
 CMD bash
 
