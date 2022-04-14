@@ -5,7 +5,7 @@ LABEL Description="A development environment for building QuantLib-SWIG on Travi
 
 RUN apt-get update \
  && DEBIAN_FRONTEND=noninteractive apt-get install -y autoconf automake libtool \
-                                                      make libpcre3-dev clang \
+                                                      make libpcre3-dev clang git \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
