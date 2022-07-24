@@ -6,13 +6,13 @@ on:
         description: 'Boost version'
         required: true
 env:
-  ROLLING: impish
+  ROLLING: jammy
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     strategy:
       matrix:
-        tag: [hirsute, impish, jammy]
+        tag: [jammy]
     steps:
     - uses: actions/checkout@v2
     - name: Build images
