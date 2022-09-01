@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        tag: [jammy]
+        tag: [jammy, kinetic]
     steps:
     - uses: actions/checkout@v2
     - name: Build images
