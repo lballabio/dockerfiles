@@ -4,9 +4,9 @@ jobs:
   build-base:
     runs-on: ubuntu-20.04
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Checkout latest QuantLib master
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         repository: lballabio/QuantLib
         path: quantlib-swig-devenv/QuantLib
@@ -16,7 +16,7 @@ jobs:
         rm -rf QuantLib/.git
         docker build -f Dockerfile.base --build-arg tag=rolling -t ghcr.io/lballabio/quantlib-swig-devenv:base .
     - name: Login to GitHub Container Registry
-      uses: docker/login-action@v1
+      uses: docker/login-action@v2
       with:
         registry: ghcr.io
         username: ${{ github.repository_owner }}
@@ -31,13 +31,13 @@ jobs:
       matrix:
         tag: [default, threadsafe]
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Build Docker images
       working-directory: quantlib-swig-devenv
       run: |
         docker build -f Dockerfile.${{ matrix.tag }} -t ghcr.io/lballabio/quantlib-swig-devenv:${{ matrix.tag }} .
     - name: Login to GitHub Container Registry
-      uses: docker/login-action@v1
+      uses: docker/login-action@v2
       with:
         registry: ghcr.io
         username: ${{ github.repository_owner }}
@@ -52,13 +52,13 @@ jobs:
       matrix:
         lang: [python3, csharp, java, r]
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Build Docker images
       working-directory: quantlib-swig-devenv
       run: |
         docker build -f Dockerfile.${{ matrix.lang }} -t ghcr.io/lballabio/quantlib-swig-devenv:${{ matrix.lang }} .
     - name: Login to GitHub Container Registry
-      uses: docker/login-action@v1
+      uses: docker/login-action@v2
       with:
         registry: ghcr.io
         username: ${{ github.repository_owner }}
@@ -69,18 +69,21 @@ jobs:
   build-dependent-languages:
     runs-on: ubuntu-20.04
     needs: build-main-languages
+    strategy:
+      matrix:
+        lang: [scala]
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Build Docker images
       working-directory: quantlib-swig-devenv
       run: |
-        docker build -f Dockerfile.scala -t ghcr.io/lballabio/quantlib-swig-devenv:scala .
+        docker build -f Dockerfile.${{ matrix.lang }} -t ghcr.io/lballabio/quantlib-swig-devenv:${{ matrix.lang }} .
     - name: Login to GitHub Container Registry
-      uses: docker/login-action@v1
+      uses: docker/login-action@v2
       with:
         registry: ghcr.io
         username: ${{ github.repository_owner }}
         password: ${{ secrets.GHCR_PAT }}
     - name: Push Docker images
       run: |
-        docker push ghcr.io/lballabio/quantlib-swig-devenv:scala
+        docker push ghcr.io/lballabio/quantlib-swig-devenv:${{ matrix.lang }}
