@@ -4,8 +4,8 @@ LABEL Description="A development environment for building QuantLib-SWIG on Travi
 
 RUN cd /QuantLib \
  && ./autogen.sh \
- && ./configure --enable-unity-build --disable-static CC=clang CXX=clang++ CXXFLAGS='-O3 -g0' \
- && make -j 4 && make install \
+ && ./configure --enable-unity-build --disable-static --disable-test-suite CC=clang CXX=clang++ CXXFLAGS='-O3 -g0' \
+ && make -j 4 install \
  && cd .. && rm -rf /QuantLib
 
 RUN ldconfig
