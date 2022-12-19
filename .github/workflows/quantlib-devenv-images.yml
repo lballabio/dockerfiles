@@ -6,7 +6,7 @@ on:
         description: 'Boost version'
         required: true
 env:
-  ROLLING: jammy
+  ROLLING: kinetic
 jobs:
   build:
     runs-on: ubuntu-latest
