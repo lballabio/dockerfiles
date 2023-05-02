@@ -6,13 +6,13 @@ on:
         description: 'Boost version'
         required: true
 env:
-  ROLLING: kinetic
+  ROLLING: lunar
 jobs:
   build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        tag: [jammy, kinetic]
+        tag: [jammy, kinetic, lunar]
     steps:
     - uses: actions/checkout@v3
     - name: Build images
